@@ -18,6 +18,13 @@ remote_file pkg_local_path do
   not_if {File.exists?(pkg_local_path)}
 end
 
+directory install_path do
+  owner "root"
+  group "root"
+  mode "0755"
+  action :create
+end
+
 execute "install automysqlbackup" do
   command "tar -xzvf #{pkg_local_path} -C #{install_path}"
   not_if {File.directory?(install_path)}
