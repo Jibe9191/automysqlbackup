@@ -30,3 +30,5 @@ remote_file pkg_local_archive do
   checksum "4a295dd11c6ada8d2868bb65f860728f2e47c4a043c976b0ac4aac0ef20e9758"
   notifies :run, "script[install_automysqlbackup]", :immediately
 end
+
+automysqlbackup "sonar"
