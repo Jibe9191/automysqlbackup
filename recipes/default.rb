@@ -22,3 +22,13 @@ execute "install automysqlbackup" do
   command "tar -xzvf #{pkg_local_archive} -C #{node[:automysqlbackup][:install_location]}"
   not_if {File.directory?(pkg_local_path)}
 end
+
+script "install_something" do
+  interpreter "bash"
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+    echo "hello"
+    echo "#{pkg_local_path}"
+  EOH
+end
