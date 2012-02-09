@@ -18,17 +18,13 @@ remote_file pkg_local_archive do
   not_if {File.exists?(pkg_local_archive)}
 end
 
-execute "install automysqlbackup" do
-  command "tar -xzvf #{pkg_local_archive} -C #{node[:automysqlbackup][:install_location]}"
-  not_if {File.directory?(pkg_local_path)}
-end
-
-script "install_something" do
+script "install_automysqlbackup" do
   interpreter "bash"
   user "root"
   cwd "/tmp"
   code <<-EOH
-    echo "hello"
-    echo "#{pkg_local_path}"
+    tar -zxf "#{pkg_local_archive}"
+    cd "#{node[:automysqlbackup][:package_name]}"
+    ./install.sh < /dev/null
   EOH
 end
