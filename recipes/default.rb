@@ -31,4 +31,11 @@ remote_file pkg_local_archive do
   notifies :run, "script[install_automysqlbackup]", :immediately
 end
 
-automysqlbackup "sonar"
+automysqlbackup "sonar" do
+  db_name "sonar"
+  db_password "sonar"
+  db_user "sonar"
+  backup_dir "/tmp/backup"
+  dryrun true
+end
+
