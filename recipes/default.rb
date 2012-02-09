@@ -19,6 +19,6 @@ remote_file pkg_local_path do
 end
 
 execute "install automysqlbackup" do
-  command "tar -xzvf #{pkg_local_path} -C #{node[:automysqlbackup][:install_location]}"
+  command "tar -xzvf #{pkg_local_path} -C #{install_path}"
   not_if {File.directory?(install_path)}
 end
