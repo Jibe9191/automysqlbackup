@@ -37,5 +37,6 @@ automysqlbackup "sonar" do
   db_password "sonar"
   config_dir node[:automysqlbackup][:config_dir]
   backup_dir node[:automysqlbackup][:backup_dir]
+  dry_run true
 end
 

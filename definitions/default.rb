@@ -1,7 +1,8 @@
 define :automysqlbackup,
     :db_name => nil, :db_user => nil, :db_password => nil,
     :backup_dir => "/opt/base/backup",
-    :config_dir => "/etc/automysqlbackup" do
+    :config_dir => "/etc/automysqlbackup",
+    :dry_run => false do
 
     backup_config_file = "#{params[:config_dir]}/#{params[:name]}.conf"
 
@@ -14,7 +15,8 @@ define :automysqlbackup,
            :db_name => params[:db_name],
            :db_user => params[:db_user],
            :db_password => params[:db_password],
-           :backup_dir => params[:backup_dir]
+           :backup_dir => params[:backup_dir],
+           :dry_run => params[:dry_run]
         )
     end
 

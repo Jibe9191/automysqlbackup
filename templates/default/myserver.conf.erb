@@ -266,3 +266,7 @@ CONFIG_db_month_names=('<%=@db_name%>')
 # inactive: =0 or commented out
 # active: uncommented AND =1
 #CONFIG_dryrun=1
+
+<% if @dry_run %>
+<%= 'CONFIG_dryrun=1' %>
+<% end %>
