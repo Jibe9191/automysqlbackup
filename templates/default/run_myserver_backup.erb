@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+/usr/local/bin/automysqlbackup <%= @config_file %>
+
+chown root.root <%= @backup_dir %>* -R
+find <%= @backup_dir %>* -type f -exec chmod 400 {} \;
+find <%= @backup_dir %>* -type d -exec chmod 700 {} \;
+
